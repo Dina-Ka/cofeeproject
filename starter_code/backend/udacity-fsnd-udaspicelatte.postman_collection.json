@@ -641,6 +641,18 @@
 			"key": "host",
 			"value": "localhost:5000",
 			"type": "string"
+		},
+    {
+			"id": "7da0fa13-ecd9-4d7d-8e38-fde2c81cfdaf",
+			"key": "manager_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkxwOUpoS254T3huR0ZwdUhOREpDMiJ9.eyJpc3MiOiJodHRwczovL3Byb2plY3QtdGhyZWUtZnNuZC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjA0NDFjNDhiNWQzOWQwMDcwNDgzZWM5IiwiYXVkIjoiZHJpbmtzIiwiaWF0IjoxNjE1MDc3MjM0LCJleHAiOjE2MTUwODQ0MzQsImF6cCI6Ik5reHZWS3NuVlNTc0t0aWdheDZuR241WnF1bEtPWVRrIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.HhYBEG0KEOCowqGj_cD0flH8HLUCELT786kadq-JoZZ6OtowPWvYif5yHyOholUNu2rAB53nODHIIur3Q0hXIw0Czcv8iH5U4gj35PIwQOP7cMAAUbF9r8K3EJkYS6sIJ8r_9ZCTTVM6MPb4frvYHVR8rda5DvCkZIGV-R1cAu_RKuHHJ8vaskFkuQNsMXEy1QaIg9CVlIk1-zChu46JJGvFgeYGc6Tli4TUzxANKAgu47wbDwst2guSCI9WUmLapnfCiw9Edb3bCf0rUxAYKwuXuRber9iYCLlmfESXl0vh0YQTCtBsslnY_Flx7GuP5ENsDkeAmBweXSo8VMSOKQ",
+			"type": "string"
+		},
+		{
+			"id": "7da0fa13-ecd9-4d7d-8e38-fde2c81cfdaf",
+			"key": "barista_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkxwOUpoS254T3huR0ZwdUhOREpDMiJ9.eyJpc3MiOiJodHRwczovL3Byb2plY3QtdGhyZWUtZnNuZC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjA0MTEzOWMzZjg0NzMwMDZmNTYwMzE1IiwiYXVkIjoiZHJpbmtzIiwiaWF0IjoxNjE1MDc3Mjg0LCJleHAiOjE2MTUwODQ0ODQsImF6cCI6Ik5reHZWS3NuVlNTc0t0aWdheDZuR241WnF1bEtPWVRrIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.mFfzUmh-YUNNLfEz5dytzLfD5oW9uJlLUhe-fT54csHertCOGxu8XzRpcfhcBp4xgLobUEnfQTJZGFEIb2mCLhE_8lz_k6rnHWULJLyAqJkrESqOUXiKn4UzJi1jZPzWjGqh2-nRkVNB2hvOphyaoqWQC6w5N1bTYNJEe15hdbECzTp6lNMCSBp9x1DQezX514XNh8swb4LDl-K9bccVE56Qq6Gm4erM2kAyybErh2R8hADixr01oKG0-Cpgkupj0eg6bjVkRhq2T_2NJMGDXdOx7rtYGoJT3RdpDe5PEQyGV-EmrTcehC8LbHk3FOnryxaqi992xBQmKYRadgux-Q",
+			"type": "string"
 		}
 	]
 }

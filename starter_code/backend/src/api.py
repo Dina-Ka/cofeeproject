@@ -251,5 +251,3 @@ def bad_request(error):
         "message": 'Bad Request'
     }), 400
 #
-# if __name__ == '__main__':
-#     app.run(port=8080, debug=True)
