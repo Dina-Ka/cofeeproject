@@ -9,7 +9,6 @@ AUTH0_DOMAIN = 'project-three-fsnd.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'drinks'
 
-## AuthError Exception
 '''
 AuthError Exception
 A standardized way to communicate auth failure modes
@@ -22,55 +21,50 @@ class AuthError(Exception):
         self.status_code = status_code
 
 
-## Auth Header
-
 '''
 @TODO implement get_token_auth_header() method
     it should attempt to get the header from the request
-        it should raise an AuthError if no header is present
+    it should raise an AuthError if no header is present
     it should attempt to split bearer and the token
-        it should raise an AuthError if the header is malformed
+    it should raise an AuthError if the header is malformed
     return the token part of the header
 '''
 
-# Authorization Header
-# done
+
 def get_token_auth_header():
     headers = request.headers
     if 'Authorization' not in headers:
         abort(401)
     authorization = request.headers.get('Authorization')
-    # print('Headers')
-    # print(request.headers.get('Authorization'))
     authorizationSplitted = authorization.split(" ")
-    # print('headers After Splitting:')
-    # print(authorizationSplitted)
-    # print(len(authorizationSplitted))
     if not authorizationSplitted:
         raise AuthError({
             'code': 'invalid_header',
-            'description': 'Authorization header is not in the right format'}, 401)
+            'description': 'Authorization header is not '
+                           'in the right format'}, 401)
     if len(authorizationSplitted) != 2:
         raise AuthError({
             'code': 'invalid_header',
-            'description': 'Authorization header is not in the right format'}, 401)
+            'description': 'Authorization header is not'
+                           ' in the right format'}, 401)
     elif authorizationSplitted[0].lower() != 'bearer':
         raise AuthError({
             'code': 'invalid_header',
-            'description': 'Authorization header does not contain Bearer'}, 401)
+            'description': 'Authorization header does not '
+                           'contain Bearer'}, 401)
     returntoken = authorizationSplitted[1]
-    # print(str(returntoken))
     return returntoken
 
 
 '''
 @TODO implement check_permissions(permission, payload) method
     @INPUTS
-        permission: string permission (i.e. 'post:drink')
-        payload: decoded jwt payload
+    permission: string permission (i.e. 'post:drink')
+    payload: decoded jwt payload
     it should raise an AuthError if permissions are not included in the payload
-        !!NOTE check your RBAC settings in Auth0
-    it should raise an AuthError if the requested permission string is not in the payload permissions array
+    !!NOTE check your RBAC settings in Auth0
+    it should raise an AuthError if the requested permission
+    string is not in the payload permissions array
     return true otherwise
 '''
 
@@ -78,15 +72,16 @@ def get_token_auth_header():
 def check_permissions(permission, payload):
     if 'permissions' not in payload:
         raise AuthError({
-        'code': 'invalid_claims',
-        'description': 'Permission not provided in the jwt.'
+            'code': 'invalid_claims',
+            'description': 'Permission not provided in the jwt.'
         }, 400)
 
     if permission not in payload['permissions']:
         raise AuthError({
             'code': 'unauthorized',
+            'code': 'unauthorized',
             'description': 'Dont have permission.'
-        }, 403)
+        }, 401)
     return True
 
 
@@ -99,7 +94,8 @@ def check_permissions(permission, payload):
     it should decode the payload from the token
     it should validate the claims
     return the decoded payload
-    !!NOTE urlopen has a common certificate error described here: https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
+    !!NOTE urlopen has a common certificate error described here:
+    https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
 '''
 
 
@@ -107,7 +103,6 @@ def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
     unverified_header = jwt.get_unverified_header(token)
-    # print(unverified_header)
     rsa_key = {}
     if 'kid' not in unverified_header:
         raise AuthError({
@@ -124,7 +119,6 @@ def verify_decode_jwt(token):
                 'n': key['n'],
                 'e': key['e']
             }
-
 
     if rsa_key:
         try:
@@ -157,15 +151,19 @@ def verify_decode_jwt(token):
         'description': 'couldnot find the appropriate key.'
     }, 400)
 
+
 '''
 @TODO implement @requires_auth(permission) decorator method
     @INPUTS
         permission: string permission (i.e. 'post:drink')
     it should use the get_token_auth_header method to get the token
     it should use the verify_decode_jwt method to decode the jwt
-    it should use the check_permissions method validate claims and check the requested permission
-    return the decorator which passes the decoded payload to the decorated method
+    it should use the check_permissions method validate claims and
+    check the requested permission
+    return the decorator which passes
+    the decoded payload to the decorated method
 '''
+
 
 # done
 def requires_auth(permission=''):
@@ -176,6 +174,7 @@ def requires_auth(permission=''):
             payload = verify_decode_jwt(token)
             check_permissions(permission, payload)
             return f(payload, *args, **kwargs)
+
         return wrapper
 
     return requires_auth_decorator
